@@ -1,0 +1,36 @@
+N_colors: 3
+beta0: 11.0
+g0: 0.00073242
+gauge_group: SU(3)
+hmc:
+  n_steps: 100
+  target_acceptance: 0.75
+  trajectory_length: 1.0
+lattice_sizes:
+- - 24
+  - 24
+  - 24
+  - 48
+- - 32
+  - 32
+  - 32
+  - 64
+- - 40
+  - 40
+  - 40
+  - 80
+measurement_interval: 10
+n_configurations: 2000
+n_flavors: 0
+phi_values:
+- 0.2
+- 0.3
+- 0.4
+- 0.5
+- 0.6
+- 0.8
+smearing:
+  alpha: 0.5
+  n_iterations: 50
+  type: APE
+thermalization: 1000
