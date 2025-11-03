@@ -85,9 +85,7 @@ validation, and reproducible lattice simulation plans are provided.
 ### 4. **Comments Field**
 
 ```
-50+ pages including appendices with complete mathematical proofs. 
-Addresses Clay Millennium Prize Problem on Yang-Mills mass gap. 
-Code and data available at: github.com/playsmartball/yang-mills-solution
+50+ pages including appendices with complete mathematical proofs. Addresses Clay Millennium Prize Problem on Yang-Mills mass gap. Numerical code available at: github.com/playsmartball/yang-mills-solution
 ```
 
 ---

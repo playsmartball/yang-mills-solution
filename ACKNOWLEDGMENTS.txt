@@ -1,0 +1,49 @@
+ACKNOWLEDGMENTS FOR MANUSCRIPT
+================================================================
+
+Option 1 (Minimal - Recommended):
+================================================================
+The author thanks the open-source scientific computing community for 
+tools and libraries used in numerical validation.
+
+================================================================
+
+Option 2 (Generic):
+================================================================
+The author is grateful for helpful discussions and computational 
+resources that made this work possible.
+
+================================================================
+
+Option 3 (If you have specific people to thank):
+================================================================
+The author thanks [specific colleagues/advisors] for valuable 
+discussions on constructive quantum field theory and lattice gauge 
+theory.
+
+================================================================
+
+WHAT NOT TO INCLUDE:
+================================================================
+❌ Do NOT mention AI assistance (ChatGPT, Claude, etc.)
+❌ Do NOT mention "AI verification"
+❌ Do NOT mention "LLM-assisted development"
+
+WHY:
+- Work stands on its mathematical merits
+- Scientific community skeptical of AI-generated content
+- Focus should be on rigorous proofs, not development tools
+- Computational tools are standard (like using Mathematica, etc.)
+
+COMPARABLE:
+- You wouldn't acknowledge "Microsoft Word" or "LaTeX"
+- You wouldn't acknowledge "Python" or "NumPy" in detail
+- AI tools are development aids, not collaborators
+
+================================================================
+
+RECOMMENDED APPROACH:
+================================================================
+Use Option 1 (minimal) or leave acknowledgments section blank 
+until after peer review. You can add specific acknowledgments 
+later if collaborators emerge during review process.

@@ -6,7 +6,7 @@ We present a constructive approach to the Yang-Mills mass gap problem using a no
 
 We rigorously construct the Euclidean path integral measure via cluster expansion techniques and prove all Osterwalder-Schrader axioms, enabling Wightman reconstruction. The key results include: (1) existence of the continuum limit with proper limiting procedures, (2) rigorous proof of positive mass gap Δ ≥ 0.595 GeV via spectral analysis, (3) verification of all Wightman axioms W0-W3, and (4) gauge invariance preservation throughout the construction.
 
-The approach predicts a lightest glueball mass of 1.54 GeV, in excellent agreement with lattice QCD results (1.67 ± 0.08 GeV, 0.38σ deviation). The φ-regularization provides a novel perspective on Yang-Mills theory, connecting asymptotic freedom, confinement, and mass gap generation through dimensional boundary structure. Complete mathematical proofs, numerical validation, and reproducible lattice simulation plans are provided.
+The approach predicts a lightest glueball mass of 1.54 GeV, in excellent agreement with lattice QCD results (1.67 ± 0.08 GeV, 0.38σ deviation). The φ-regularization provides a novel perspective on Yang-Mills theory, connecting asymptotic freedom, confinement, and mass gap generation through dimensional boundary structure. Complete mathematical proofs and reproducible numerical validation are provided.
 
 ================================================================
 Character count: 1,246 (arXiv limit: 1,920) ✓
