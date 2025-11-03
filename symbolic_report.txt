@@ -1,0 +1,42 @@
+
+======================================================================
+SYMBOLIC VERIFICATION REPORT
+======================================================================
+
+
+ASYMPTOTIC FREEDOM:
+  Status: ✓ PASS
+  expression: g_0*phi**beta_0
+  limit_phi_to_0: 0
+  interpretation: Coupling vanishes in UV limit (φ→0)
+
+MASS GAP POSITIVITY:
+  Status: ○ INFO
+  expression: Lambda_QCD*exp(-8*pi**2/(3*g**2))
+  derivative: 16*pi**2*Lambda_QCD*exp(-8*pi**2/(3*g**2))/(3*g**3)
+  positive_for_finite_g: True
+  interpretation: M_gap > 0 for all finite g > 0
+
+DIMENSIONAL BOUNDARY:
+  Status: ○ INFO
+  phi_critical: 0.5
+  first_derivative: 0.5774638145351502
+  second_derivative: 3.079807010854134
+  interpretation: Coupling evolution through dimensional boundary
+
+GAUGE INVARIANCE:
+  Status: ✓ PASS
+  field_strength: F_μν = ∂_μ A_ν - ∂_ν A_μ + [A_μ, A_ν]
+  transformation: F_μν → U F_μν U^†
+  action_invariance: Tr(F_μν F^μν) invariant under gauge transformations
+
+BETA FUNCTION:
+  Status: ✓ PASS
+  beta_function: g**3*(-11*N/3 + 2*n_f/3)
+  b0_coefficient: 11*N/3
+  negative_for_N_geq_2: True
+  asymptotic_freedom: Guaranteed for SU(N≥2)
+
+======================================================================
+Symbolic Tests Passed: 3/5
+======================================================================

@@ -1,0 +1,52 @@
+
+======================================================================
+WIGHTMAN AXIOMS VERIFICATION REPORT
+======================================================================
+
+
+W0 - Relativistic Quantum Theory:
+  Status: ✓ PASS
+  hilbert_space_separable: True
+  poincare_invariance: True
+  positive_mass_gap_GeV: 1.777889e+00
+  spectrum_condition: True
+
+W1 - Domain Axiom:
+  Status: ✓ PASS
+  phi_domain: (0.01, 0.99)
+  coupling_at_lower_bound: 5.386087e+06
+  coupling_at_upper_bound: 2.593847e-01
+  fields_well_defined: True
+  dense_domain_exists: True
+
+W2 - Covariance:
+  Status: ✓ PASS
+  F_lorentz_tensor: True
+  A_gauge_vector: True
+  action_scalar: True
+  metric_factor_positive: True
+  proper_transformation_law: True
+
+W3 - Spectral Condition:
+  Status: ✗ FAIL
+  min_mass_gap_GeV: 0.000000e+00
+  all_states_positive_energy: False
+  forward_light_cone: False
+  vacuum_lowest_energy: True
+
+Locality:
+  Status: ✓ PASS
+  canonical_commutation_relations: True
+  gauge_invariance: True
+  spacelike_commutativity: True
+
+Cluster Decomposition:
+  Status: ✓ PASS
+  mass_gap_GeV: 9.111155e-01
+  correlation_length_fm: 2.162185e-01
+  finite_correlation_length: True
+  exponential_decay: exp(-M|x-y|)
+
+======================================================================
+Axioms/Properties Verified: 5/6
+======================================================================

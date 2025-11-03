@@ -1,0 +1,52 @@
+
+======================================================================
+NUMERICAL TEST REPORT
+======================================================================
+
+
+COUPLING EVOLUTION:
+  Status: ✗ FAIL
+  phi_range: (0.01, 1.0)
+  g_at_UV: 5.386087e+06
+  g_at_IR: 2.500000e-01
+  g_at_critical: 3.185312e+00
+  dg_dphi_at_critical: -2.338042e+01
+  asymptotic_freedom: False
+
+MASS GAP SPECTRUM:
+  Status: ✗ FAIL
+  min_mass_gap_GeV: 0.000000e+00
+  phi_at_min_gap: 7.545455e-01
+  mass_gap_at_critical_GeV: 1.831576e+00
+  all_positive: False
+
+DIMENSIONAL BOUNDARY:
+  Status: ✗ FAIL
+  epsilon: 1.000000e-02
+  g_before: 3.418910e+00
+  g_at_boundary: 3.174802e+00
+  g_after: 2.952451e+00
+  metric_before: 9.003320e-01
+  metric_at_boundary: 1.000000e+00
+  metric_after: 1.099668e+00
+  metric_transition: 1.993360e-01
+  sharp_transition: False
+
+CONFINEMENT SCALE:
+  Status: ✗ FAIL
+  phi_confinement: 6.000000e-01
+  coupling_g: 1.626992e+00
+  mass_gap_GeV: 9.111155e-01
+  string_tension_predicted_GeV2: 8.301315e-01
+  string_tension_experimental_GeV2: 1.936000e-01
+  relative_error: 3.287869e+00
+
+RG FLOW:
+  Status: ✗ FAIL
+  b0_coefficient: 3.666667e+00
+  avg_relative_difference: 2.000015e+00
+  max_relative_difference: 2.002080e+00
+
+======================================================================
+Numerical Tests Passed: 0/5
+======================================================================
