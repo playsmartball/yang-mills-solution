@@ -146,6 +146,34 @@ where:
 \end{itemize}
 \end{definition}
 
+\subsection{Critical Clarification: Status of φ-Parameter}
+\label{subsec:phi_status}
+
+Before proceeding, we must address a fundamental question that determines the validity of this approach:
+
+\begin{remark}[φ is a Regularization Parameter, NOT a Dynamical Field]
+\textbf{Key Question:} Is $\phi$ integrated over in the path integral, or is it a fixed parameter?
+
+\textbf{Answer:} The parameter $\phi$ is a \textbf{fixed regularization parameter}, NOT a dynamical field variable.
+
+The φ-regularized partition function is:
+\begin{equation}
+Z_{\phi} = \int \mathcal{D}A \, e^{-S_{\phi}[A]}
+\end{equation}
+where $\phi$ is \textbf{held fixed}. There is \textbf{NO} $\mathcal{D}\phi$ measure in the path integral.
+
+\textbf{Comparison with other regularization schemes:}
+\begin{itemize}
+\item \textbf{Lattice QCD}: $Z_a = \int \mathcal{D}U \, e^{-S_a[U]}$ where $a$ = lattice spacing (fixed)
+\item \textbf{φ-regularization}: $Z_\phi = \int \mathcal{D}A \, e^{-S_\phi[A]}$ where $\phi$ = RG scale parameter (fixed)
+\item \textbf{Scalar field theory}: $Z = \int \mathcal{D}A \, \mathcal{D}\sigma \, e^{-S[A,\sigma]}$ where $\sigma$ IS integrated ← NOT our case!
+\end{itemize}
+
+In both lattice QCD and φ-regularization, the regularization parameter is NOT integrated over. This construction yields \textbf{pure Yang–Mills theory} after taking appropriate limits (UV, IR, continuum), with NO additional dynamical fields.
+\end{remark}
+
+This distinction is crucial: our φ-regularization is a \textit{regularization scheme} (like lattice QCD), not a theory with additional fields. The Millennium Prize requirement for ``pure Yang–Mills theory on $\mathbb{R}^4$'' is satisfied after removing the regulator via proper limiting procedures (detailed in Section 4).
+
 \subsection{Finite-Volume Regularization}
 
 For rigorous construction, work on torus $T_L^4$ with side length $L$:
