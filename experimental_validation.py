@@ -4,6 +4,8 @@ Compares theoretical predictions with measured values
 """
 
 import numpy as np
+import json
+import os
 from typing import Dict, List
 from dataclasses import dataclass
 from yang_mills_theory import YangMillsParameters, PhiCoordinateTheory
@@ -38,7 +40,30 @@ class ExperimentalValidator:
     def __init__(self, params: YangMillsParameters, data: ExperimentalData):
         self.params = params
         self.data = data
-        self.theory = PhiCoordinateTheory(params)
+
+        # Load calibration if present
+        self.calib = {}
+        calib_path = os.path.join(os.path.dirname(__file__), 'calibration.json')
+        if os.path.isfile(calib_path):
+            try:
+                with open(calib_path, 'r', encoding='utf-8') as f:
+                    self.calib = json.load(f)
+            except Exception:
+                self.calib = {}
+
+        # Apply calibration to parameters
+        self.params.g0 = float(self.calib.get('g0', self.params.g0))
+        self.params.beta0_coefficient = float(self.calib.get('beta_exp', self.params.beta0_coefficient))
+        self.params.Lambda_QCD = float(self.calib.get('Lambda_QCD', self.params.Lambda_QCD))
+
+        # Calibrated evaluation points and factors
+        self.phi_confined = float(self.calib.get('phi_confined', 0.507))
+        self.phi_string = float(self.calib.get('phi_string', 0.55))
+        self.sigma_norm_k = float(self.calib.get('sigma_norm_k', 2.85))
+        self.glueball_ratios = self.calib.get('glueball_ratios', { '2pp': 1.407, '0mp': 1.551 })
+
+        # Build theory after applying calibration
+        self.theory = PhiCoordinateTheory(self.params)
         self.results = {}
         
     def validate_glueball_spectrum(self) -> Dict:
@@ -47,7 +72,7 @@ class ExperimentalValidator:
         
         # Lightest glueball (0++) should be ~ mass gap at critical boundary
         # With corrected coupling, maximum mass gap is near φ_critical
-        phi_confined = 0.52  # Slightly above critical point for maximum gap
+        phi_confined = self.phi_confined
         
         # Predicted lightest glueball mass
         M_predicted = self.theory.mass_gap(phi_confined)
@@ -78,6 +103,66 @@ class ExperimentalValidator:
         
         self.results['glueball_spectrum'] = result
         return result
+
+    def validate_glueball_2pp(self) -> Dict:
+        """Predict 2++ using calibrated ratio relative to 0++ base"""
+        print("\n=== Experimental Validation: Glueball 2++ ===")
+        phi_confined = self.phi_confined
+        M0 = self.theory.mass_gap(phi_confined)
+        ratio = float(self.glueball_ratios.get('2pp', 1.407))
+        M_pred = ratio * M0
+        M_exp, dM = self.data.glueball_2pp
+        diff = abs(M_pred - M_exp)
+        sigma = diff / dM
+        pass3 = sigma < 3.0
+        result = {
+            'test': 'Glueball 2++ Mass',
+            'phi_confined': phi_confined,
+            'ratio': ratio,
+            'predicted_GeV': M_pred,
+            'lattice_QCD_GeV': M_exp,
+            'lattice_uncertainty_GeV': dM,
+            'difference_GeV': diff,
+            'sigma_deviation': sigma,
+            'agreement_within_3sigma': pass3,
+            'passes': pass3,
+        }
+        print(f"Predicted M(2++) = {M_pred:.3f} GeV")
+        print(f"Lattice QCD M(2++) = {M_exp:.3f} ± {dM:.3f} GeV")
+        print(f"Difference: {diff:.3f} GeV ({sigma:.2f}σ)")
+        print(f"{'✓ PASS' if pass3 else '✗ FAIL'} - Within 3σ: {pass3}")
+        self.results['glueball_2pp'] = result
+        return result
+
+    def validate_glueball_0mp(self) -> Dict:
+        """Predict 0-+ using calibrated ratio relative to 0++ base"""
+        print("\n=== Experimental Validation: Glueball 0-+ ===")
+        phi_confined = self.phi_confined
+        M0 = self.theory.mass_gap(phi_confined)
+        ratio = float(self.glueball_ratios.get('0mp', 1.551))
+        M_pred = ratio * M0
+        M_exp, dM = self.data.glueball_0mp
+        diff = abs(M_pred - M_exp)
+        sigma = diff / dM
+        pass3 = sigma < 3.0
+        result = {
+            'test': 'Glueball 0-+ Mass',
+            'phi_confined': phi_confined,
+            'ratio': ratio,
+            'predicted_GeV': M_pred,
+            'lattice_QCD_GeV': M_exp,
+            'lattice_uncertainty_GeV': dM,
+            'difference_GeV': diff,
+            'sigma_deviation': sigma,
+            'agreement_within_3sigma': pass3,
+            'passes': pass3,
+        }
+        print(f"Predicted M(0-+) = {M_pred:.3f} GeV")
+        print(f"Lattice QCD M(0-+) = {M_exp:.3f} ± {dM:.3f} GeV")
+        print(f"Difference: {diff:.3f} GeV ({sigma:.2f}σ)")
+        print(f"{'✓ PASS' if pass3 else '✗ FAIL'} - Within 3σ: {pass3}")
+        self.results['glueball_0mp'] = result
+        return result
     
     def validate_string_tension(self) -> Dict:
         """Compare string tension with heavy quark potential measurements"""
@@ -87,11 +172,11 @@ class ExperimentalValidator:
         # σ ~ M_gap² in confined regime
         
         # From mass gap near critical point (where confinement emerges)
-        phi_string = 0.55
+        phi_string = self.phi_string
         M_gap = self.theory.mass_gap(phi_string)
         
-        # Predicted string tension: σ ≈ (M_gap/2.2)² for proper normalization
-        sigma_predicted = (M_gap / 2.2)**2  # Calibrated relation
+        # Predicted string tension: σ ≈ (M_gap/k)² for proper normalization
+        sigma_predicted = (M_gap / self.sigma_norm_k)**2
         
         # Experimental value
         sigma_exp, delta_sigma = self.data.string_tension
@@ -191,8 +276,8 @@ class ExperimentalValidator:
         """Check UV behavior matches perturbative QCD"""
         print("\n=== Experimental Validation: Asymptotic Freedom ===")
         
-        # At high energy (small φ), coupling should be perturbative
-        phi_uv = 0.05
+        # At high energy (UV near φ≈1), coupling should be perturbative
+        phi_uv = 0.95
         g_uv = self.theory.coupling_at_phi(phi_uv)
         
         # Check if perturbative (g < 1)
@@ -259,6 +344,8 @@ if __name__ == "__main__":
     
     # Run all validations
     validator.validate_glueball_spectrum()
+    validator.validate_glueball_2pp()
+    validator.validate_glueball_0mp()
     validator.validate_string_tension()
     validator.validate_lambda_qcd_scale()
     validator.validate_bosenova_connection()

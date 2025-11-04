@@ -77,7 +77,7 @@ class PhiCoordinateTheory:
             if exponent > -50:  # Avoid underflow
                 return self.params.Lambda_QCD * np.exp(exponent)
             else:
-                return 0.0
+                return 1e-9
     
     def dimensional_metric(self, phi_val: float) -> float:
         """φ-dependent metric factor sqrt(g(φ))"""

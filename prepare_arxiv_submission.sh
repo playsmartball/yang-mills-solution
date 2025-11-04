@@ -24,7 +24,8 @@ cp appendix_A2_measure_construction_full.tex $SUBMIT_DIR/
 cp appendix_phi_regularization_rigorous.tex $SUBMIT_DIR/
 cp appendix_B_reflection_positivity_full_proof.tex $SUBMIT_DIR/
 cp appendix_spectral_gap_proof.tex $SUBMIT_DIR/
-echo "✓ Copied all appendices (5 files)"
+cp appendix_lattice_implementation.tex $SUBMIT_DIR/
+echo "✓ Copied all appendices (6 files)"
 
 # Convert figures to PDF if needed (arXiv prefers PDF)
 if [ -f "coupling_evolution.png" ]; then
@@ -44,6 +45,7 @@ Appendices (automatically included via \input):
 - appendix_phi_regularization_rigorous.tex
 - appendix_B_reflection_positivity_full_proof.tex
 - appendix_spectral_gap_proof.tex
+ - appendix_lattice_implementation.tex
 
 Compile: pdflatex manuscript.tex (twice for references)
 

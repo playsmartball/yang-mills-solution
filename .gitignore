@@ -31,3 +31,8 @@ final_test_output.txt
 # But keep reports
 !test_report.txt
 !*_report.txt
+
+# Build artifacts
+arxiv_submission/
+yang-mills-arxiv.tar.gz
+artifacts/

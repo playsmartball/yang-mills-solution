@@ -1,0 +1,36 @@
+% appendix_lattice_implementation.tex
+% Appendix D: Lattice Details and Reproducibility (placeholder)
+
+\section*{Appendix D: Lattice Details and Reproducibility}
+
+This appendix summarizes lattice implementation details and reproducibility notes corresponding to the φ-coordinate construction. A complete implementation plan is provided in the repository file \texttt{lattice\_simulation\_plan.py} and parameter set \texttt{lattice\_params.yaml}.
+
+\subsection*{Simulation Parameters}
+
+We recommend the following representative settings for SU(3) pure gauge:
+\begin{itemize}
+\item Lattice sizes: $24^3\times 48$, $32^3\times 64$, $40^3\times 80$
+\item φ values: $\{0.2, 0.3, 0.4, 0.5, 0.6, 0.8\}$
+\item HMC: trajectory length 1.0, 100 steps, target acceptance 0.75
+\item Smearing: APE, $\alpha = 0.5$, 50 iterations
+\end{itemize}
+
+\subsection*{Observables}
+
+\begin{itemize}
+\item Glueball masses ($0^{++}, 2^{++}, 0^{-+}$)
+\item Wilson loops and string tension
+\item Correlation functions and clustering
+\item Topological susceptibility
+\end{itemize}
+
+\subsection*{Reproducibility Notes}
+
+All scripts and parameters to reproduce the numerical checks are provided in:
+\begin{itemize}
+\item \texttt{lattice\_simulation\_plan.py}
+\item \texttt{lattice\_params.yaml}
+\item \texttt{numerical\_tests.py}, \texttt{experimental\_validation.py}
+\end{itemize}
+
+This placeholder satisfies compilation; details can be expanded with results as they become available.

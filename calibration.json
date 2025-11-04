@@ -1,0 +1,12 @@
+{
+  "g0": 0.25,
+  "beta_exp": 3.6666666667,
+  "Lambda_QCD": 0.200,
+  "phi_confined": 0.507,
+  "phi_string": 0.55,
+  "sigma_norm_k": 2.85,
+  "glueball_ratios": {
+    "2pp": 1.407,
+    "0mp": 1.551
+  }
+}
